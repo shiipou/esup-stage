@@ -1,3 +1,4 @@
+![Dev](https://github.com/EsupPortail/esup-stage/workflows/Dev/badge.svg)
 
 # Déploiement de l'application esupstage
 
