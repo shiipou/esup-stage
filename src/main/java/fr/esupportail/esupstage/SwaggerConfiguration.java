@@ -53,6 +53,7 @@ public class SwaggerConfiguration extends WebMvcConfigurationSupport {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //TODO : Test for sonarcloud
         registry.addResourceHandler("/docs/**").addResourceLocations("classpath:/META-INF/resources/");
     }
 }
