@@ -27,6 +27,10 @@
         <code.coverage.exclusions>
 
         </code.coverage.exclusions>
+
+        <sonar.projectKey>EsupPortail_esup-stage</sonar.projectKey>
+        <sonar.organization>esupportail</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <profiles>
