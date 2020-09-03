@@ -24,14 +24,10 @@
         <start-class>fr.esupportail.esupstage.WebApplication</start-class>
         <main.basedir>${basedir}/../..</main.basedir>
         <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
-        <code.coverage.exclusions>
-
-        </code.coverage.exclusions>
-
         <sonar.projectKey>EsupPortail_esup-stage</sonar.projectKey>
         <sonar.organization>esupportail</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.inclusions>src/main/java/**,src/main/resources/**</sonar.inclusions>
+        <sonar.sources>src/main/java</sonar.sources>
     </properties>
 
     <dependencies>    
