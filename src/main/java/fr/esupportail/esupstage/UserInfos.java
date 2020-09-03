@@ -38,6 +38,7 @@ public class UserInfos extends User {
         for(GrantedAuthority authority : authorities) {
             roles.add(authority.getAuthority());
         }
+        //TODO : Test for sonarcloud
         this.account = new Account(user.getPrenom() + " " + user.getNom(), roles, switched);
     }
 }

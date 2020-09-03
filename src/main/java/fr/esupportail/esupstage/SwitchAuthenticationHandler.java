@@ -44,6 +44,7 @@ public class SwitchAuthenticationHandler implements AuthenticationSuccessHandler
         response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         response.addHeader("Access-Control-Allow-Origin", frontendUrl);
         response.addHeader("Access-Control-Allow-Credentials", "true");
-        response.setHeader("Content-Type", "application/json");       
+        response.setHeader("Content-Type", "application/json");
+        //TODO : Test for sonarcloud
     }
 }

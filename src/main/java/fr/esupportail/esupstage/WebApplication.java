@@ -12,6 +12,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class WebApplication extends SpringBootServletInitializer {  
 
+    //TODO : Test for sonarcloud
     public static void main(String[] args) throws Exception {
         SpringApplication.run(WebApplication.class, args);
     }

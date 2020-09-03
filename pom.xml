@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.esupportail</groupId>
-    <artifactId>esupstage-api</artifactId>
+    <artifactId>esupstage</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>esupstage-api</name>
-    <description>Description de esupstage-api</description>
+    <name>esupstage</name>
+    <description>Description de esupstage</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -24,8 +24,12 @@
         <start-class>fr.esupportail.esupstage.WebApplication</start-class>
         <main.basedir>${basedir}/../..</main.basedir>
         <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+        <sonar.projectKey>EsupPortail_esup-stage</sonar.projectKey>
+        <sonar.organization>esupportail</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.sources>src/main/java</sonar.sources>
     </properties>
-        
+
     <dependencies>    
 
         <dependency>
@@ -132,6 +136,14 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
-        </dependency>	
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+        <dependency>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.7.0.1746</version>
+        </dependency>
+
     </dependencies>
 </project>
