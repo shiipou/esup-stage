@@ -1,0 +1,9 @@
+spring:
+  mail:
+    host: smtp.univ.fr
+    port: 25
+  ldap:
+    urls:
+    - ldap://ldap.univ.fr
+    base: ou=accounts,dc=univ,dc=fr
+    anonymous-read-only: true

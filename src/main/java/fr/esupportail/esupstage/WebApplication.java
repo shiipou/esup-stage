@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package fr.esupportail.esupstage;
- 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication
-public class WebApplication extends SpringBootServletInitializer {  
+import fr.esupportail.esupstage.property.ApplicationProperties;
 
-    //TODO : Test for sonarcloud
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(WebApplication.class, args);
-    }
-    
+@SpringBootApplication
+@EnableConfigurationProperties(value = ApplicationProperties.class)
+public class WebApplication extends SpringBootServletInitializer {
+
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(WebApplication.class, args);
+	}
+
 }
