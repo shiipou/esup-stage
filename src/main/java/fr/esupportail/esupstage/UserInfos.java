@@ -6,8 +6,10 @@
 package fr.esupportail.esupstage;
 
 import java.util.ArrayList;
-import fr.esupportail.esupstage.domain.LdapUser;
+
 import fr.esupportail.esupstage.domain.dto.Account;
+import fr.esupportail.esupstage.domain.ldap.LdapUser;
+
 import java.util.Collection;
 import java.util.List;
 import lombok.Getter;

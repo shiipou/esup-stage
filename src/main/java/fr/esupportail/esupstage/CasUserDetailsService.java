@@ -5,8 +5,6 @@
  */
 package fr.esupportail.esupstage;
 
-import fr.esupportail.esupstage.domain.LdapUser;
-import fr.esupportail.esupstage.repositories.LdapUserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +19,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import fr.esupportail.esupstage.domain.ldap.LdapUser;
+import fr.esupportail.esupstage.domain.ldap.LdapUserRepository;
 @Service
 @Slf4j
 public class CasUserDetailsService implements AuthenticationUserDetailsService, UserDetailsService {

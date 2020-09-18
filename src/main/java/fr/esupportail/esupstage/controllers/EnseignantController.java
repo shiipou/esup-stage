@@ -2,9 +2,9 @@ package fr.esupportail.esupstage.controllers;
 
 import fr.esupportail.esupstage.UserInfos;
 import fr.esupportail.esupstage.domain.dto.Account;
+import fr.esupportail.esupstage.domain.ldap.LdapUserRepository;
 import fr.esupportail.esupstage.model.Enseignant;
 import fr.esupportail.esupstage.repositories.EnseignantRepository;
-import fr.esupportail.esupstage.repositories.LdapUserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
