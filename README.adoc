@@ -1,0 +1,35 @@
+= esup-stage
+
+// URIs:
+:uri-org: https://github.com/EsupPortail
+:uri-repo: {uri-org}/esup-stage
+:uri-build-status: {uri-repo}/workflows/Dev/badge.svg
+:uri-sonarcloud: https://sonarcloud.io
+:uri-sonarcloud-badge: {uri-sonarcloud}/api/project_badges/measure?project=EsupPortail_esup-stage&metric=alert_status
+:uri-sonarcloud-project: {uri-sonarcloud}/dashboard?id=EsupPortail_esup-stage
+:uri-fakesmpt: http://nilhcem.com/FakeSMTP
+:uri-asciidoctor: https://asciidoctor.org
+:uri-asciidoctor-syntax: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference
+
+image:{uri-build-status}[Status, link={uri-repo}]
+image:{uri-sonarcloud-badge}[Sonarcloud, link={uri-sonarcloud-project}]
+
+== Prerequisite
+
+* Tomcat 9
+* Java 11
+* Maven 3
+
+== Tools
+
+=== AsciiDoctor
+
+We use the Asciidoc {uri-asciidoctor-syntax}[syntax] to write the documentation.
+
+=== FakeSMTP
+
+To test the sending of email in development, we can use {uri-fakesmpt}[FakeSMTP].
+
+```
+java -jar fakeSMTP-2.0.jar -o ./fakeSMTP-output
+```
