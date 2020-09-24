@@ -35,6 +35,7 @@ We use the Asciidoc {uri-asciidoctor-syntax}[syntax] to write the documentation.
 
 To test the sending of email in development, we can use {uri-fakesmpt}[FakeSMTP].
 
-```
+.To launch fakeSMTP from the console
+----
 java -jar fakeSMTP-2.0.jar -o ./fakeSMTP-output
-```
+----
