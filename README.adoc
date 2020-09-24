@@ -22,6 +22,11 @@ image:{uri-sonarcloud-badge}[Sonarcloud, link={uri-sonarcloud-project}]
 
 == Tools
 
+=== Swagger-ui 3.0.0
+
+Swagger-ui is used to display the application API. +
+We can access it from http://localhost:8080/swagger-ui/[/swagger-ui/].
+
 === AsciiDoctor
 
 We use the Asciidoc {uri-asciidoctor-syntax}[syntax] to write the documentation.
