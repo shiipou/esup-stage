@@ -1,6 +1,5 @@
-package fr.esupportail.esupstage.repositories;
+package fr.esupportail.esupstage.domain.jpa;
 
-import fr.esupportail.esupstage.model.Enseignant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

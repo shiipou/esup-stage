@@ -1,4 +1,4 @@
-package fr.esupportail.esupstage.model;
+package fr.esupportail.esupstage.domain.jpa;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
