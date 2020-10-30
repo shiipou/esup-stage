@@ -15,42 +15,36 @@
  *******************************************************************************/
 package fr.esupportail.esupstage.property;
 
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Configuration properties to manage the CORS configuration.
+ * Configuration properties to manage the CAS authentication.
  *
  * @author vdubus
  */
 @Getter
 @Setter
-public class CORSProperties implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class CASProperties {
 
 	/**
-	 * The list of valid domains to allow.
+	 * Login end point from {@link #baseUrl}.
 	 */
-	private List<String> allowedOrigins = Arrays.asList("*");
+	private String loginEndPoint;
 
 	/**
-	 * The list of HTTP methods to allow.
+	 * Logout end point from {@link #baseUrl}.
 	 */
-	private List<String> allowedMethods = Arrays.asList("*");
+	private String logoutEndPoint;
 
 	/**
-	 * The list of HTTP headers to allow.
+	 * The base URL of the CAS authentication server.
 	 */
-	private List<String> allowedHeaders = Arrays.asList("*");
+	private String baseUrl;
 
 	/**
-	 * The list of HTTP exposed header.
+	 * The URL that the CAS server need to call back to finish the authentication process.
 	 */
-	private List<String> exposedHeaders = Arrays.asList("Content-Disposition");
+	private String callBackUrl;
 
 }

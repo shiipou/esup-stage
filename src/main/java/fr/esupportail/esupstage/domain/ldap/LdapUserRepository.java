@@ -1,44 +1,42 @@
 package fr.esupportail.esupstage.domain.ldap;
 
 import java.util.Optional;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.ldap.core.LdapTemplate;
-import static org.springframework.ldap.query.LdapQueryBuilder.query;
+
+import org.springframework.data.ldap.repository.LdapRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Slf4j
-public class LdapUserRepository {
+public interface LdapUserRepository extends LdapRepository<LdapUser> {
 
-    @Value("${ldap.attributs.id}")
-    private String idAttr;
-    
-    @Value("${ldap.attributs.login}")
-    private String loginAttr;
-    
-    @Value("${ldap.attributs}")
-    private String attributs;
+	Optional<LdapUser> findByLogin(String login);
 
-    @Autowired
-    private LdapTemplate ldapTemplate;
-    
-    /**
-     * @param id
-     * @return l'utilisateur ldap correspondant à l'identifiant en paramètre
-     */
-    public LdapUser getUser(String id) {
-        return ldapTemplate.findOne(query().attributes(attributs.split(",")).where(idAttr).is(id), LdapUser.class);
-    }
-    
-    /**
-     * 
-     * @param login
-     * @return l'utilisateur ldap correspondant au login en paramètre
-     */
-    public LdapUser getUserByAliasLogin(String login) {
-        return ldapTemplate.findOne(query().attributes(attributs.split(",")).where(loginAttr).is(login), LdapUser.class);
-    }
+	Optional<LdapUser> findByAliasLogin(String aliasLogin);
+
+	// @Value("${ldap.attributs.id}")
+	// private String idAttr;
+	//
+	// @Value("${ldap.attributs.login}")
+	// private String loginAttr;
+	//
+	// @Value("${ldap.attributs}")
+	// private String attributs;
+	//
+	// @Autowired
+	// private LdapTemplate ldapTemplate;
+	//
+	// /**
+	// * @param id
+	// * @return l'utilisateur ldap correspondant à l'identifiant en paramètre
+	// */
+	// public LdapUser getUser(String id) {
+	// return ldapTemplate.findOne(query().attributes(attributs.split(",")).where(idAttr).is(id), LdapUser.class);
+	// }
+	//
+	// /**
+	// * @param login
+	// * @return l'utilisateur ldap correspondant au login en paramètre
+	// */
+	// public LdapUser getUserByAliasLogin(String login) {
+	// return ldapTemplate.findOne(query().attributes(attributs.split(",")).where(loginAttr).is(login), LdapUser.class);
+	// }
 }
-

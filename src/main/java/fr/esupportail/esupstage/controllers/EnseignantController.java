@@ -1,50 +1,46 @@
 package fr.esupportail.esupstage.controllers;
 
-import fr.esupportail.esupstage.UserInfos;
-import fr.esupportail.esupstage.domain.dto.Account;
-import fr.esupportail.esupstage.domain.ldap.LdapUserRepository;
-import fr.esupportail.esupstage.model.Enseignant;
-import fr.esupportail.esupstage.repositories.EnseignantRepository;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
-import springfox.documentation.annotations.ApiIgnore;
-
-import javax.validation.Valid;
 import java.util.List;
 
-@Slf4j
+import javax.annotation.security.RolesAllowed;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import fr.esupportail.esupstage.domain.jpa.Enseignant;
+import fr.esupportail.esupstage.domain.jpa.EnseignantRepository;
+
 @RestController
+@RolesAllowed("USER")
+@RequestMapping("/api/enseignants")
 public class EnseignantController {
 
-    @Value("${server.frontend.url}")
-    private String urlFrontend;
+	@Autowired
+	private EnseignantRepository enseignantRepository;
 
-    @Autowired
-    private EnseignantRepository enseignantRepository;
+	/**
+	 * @param auth
+	 * @return
+	 */
+	@GetMapping
+	public List<Enseignant> index() {
+		return enseignantRepository.findAll();
+	}
 
-    /**
-     *
-     * @param auth
-     * @return
-     */
-    @GetMapping("/api/enseignant")
-    public List<Enseignant> index(@ApiIgnore Authentication auth) {
-        List<Enseignant> teachers = enseignantRepository.findAll();
-        return enseignantRepository.findAll();
-    }
+	@PostMapping
+	public Enseignant index(@RequestBody Enseignant enseignant) {
+		enseignantRepository.save(enseignant);
+		return enseignant;
+	}
 
-    @PostMapping("/api/enseignant")
-    public Enseignant index(@ApiIgnore Authentication auth, @RequestBody @Valid Enseignant enseignant) {
-        enseignantRepository.save(enseignant);
-        return enseignant;
-    }
-
-    @DeleteMapping("/api/enseignant/{id}")
-    public void deleteEnseignant(@ApiIgnore Authentication auth, @PathVariable Long id) {
-        enseignantRepository.deleteById(id);
-    }
+	@DeleteMapping("/{id}")
+	public void deleteEnseignant(@PathVariable Long id) {
+		enseignantRepository.deleteById(id);
+	}
 }

@@ -1,0 +1,114 @@
+version: 1
+
+dn: dc=uphf,dc=fr
+objectClass: domainRelatedObject
+objectClass: organization
+objectClass: dcObject
+associatedDomain: uphf.fr
+dc: uphf
+o: uphf
+businessCategory: Universite
+description: Universite de Valenciennes et du Hainaut Cambresis Base conform
+ e aux recommandation SUPANN du 18 mars 2003
+facsimileTelephoneNumber: (33) 03.27.51.11.00
+l: Valenciennes
+postalAddress: Universite de Valenciennes et du Hainaut-Cambresis$Le Mont Ho
+ uy - $59313 VALENCIENNES Cedex 9
+postalCode: 59313
+postOfficeBox: Cedex 9
+st: France
+telephoneNumber: (33) 03.27.51.12.34
+contextCSN: 20180118140502.201526Z#000000#000#000000
+createTimestamp: 20090611154009Z
+creatorsName: cn=Manager,dc=uphf,dc=fr
+entryCSN: 20090611154009.000000Z#000000#000#000000
+entryDN: dc=uphf,dc=fr
+entryUUID:: ZmU0NDI1ZDAtOGY5Mi0xMDJjLTk5NWMtNmI3OWIxYmU0ODIw
+hasSubordinates: TRUE
+modifiersName: cn=Manager,dc=uphf,dc=fr
+modifyTimestamp: 20090611154009Z
+structuralObjectClass: organization
+subschemaSubentry: cn=Subschema
+
+dn: ou=people,dc=uphf,dc=fr
+objectClass: domainRelatedObject
+objectClass: organizationalUnit
+objectClass: top
+associatedDomain: uphf.fr
+ou: people
+description: Description de l'ensemble des utilisateurs inscrit dans la base
+  LDAP vision externe ( SUPANN )
+createTimestamp: 20080326151354Z
+creatorsName: cn=Manager,dc=uphf,dc=fr
+entryCSN: 20080326151354.000000Z#000001#000#000000
+entryDN: ou=people,dc=uphf,dc=fr
+entryUUID:: ZmU1ZGNkZGMtOGY5Mi0xMDJjLTk5NWQtNmI3OWIxYmU0ODIw
+hasSubordinates: TRUE
+modifiersName: cn=Manager,dc=uphf,dc=fr
+modifyTimestamp: 20080326151354Z
+structuralObjectClass: organizationalUnit
+subschemaSubentry: cn=Subschema
+
+dn: uid=jdoe,ou=people,dc=uphf,dc=fr
+objectClass: sambaSamAccount
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: radiusprofile
+objectClass: uvhcPerson
+objectClass: eduPerson
+objectClass: supannPerson
+objectClass: inetOrgPerson
+objectClass: top
+cn: Doe John
+gidNumber: 513
+homeDirectory: /home/v/jdoe
+sambaSID: S-1-5-21-4005389593-33730136-839789604-154366
+sn: Doe
+uid: jdoe
+uidNumber: 76683
+userPassword: jdoe
+uvhcClasseType: personnel
+description: INGENIEUR D'ETUDES DE RECH.ET FORMATION
+displayName: John Doe
+eduPersonAffiliation: employee
+eduPersonAffiliation: member
+eduPersonPrimaryAffiliation: employee
+eduPersonPrincipalName: jdoe
+givenName: John
+loginShell: /bin/bash
+mail: John.Doe@uphf.fr
+mailForwardingAddress: jdoe
+preferredLanguage: fr
+radiusServiceType: Framed-User
+radiusSessionTimeout: 1200
+radiusSimultaneousUse: 2
+radiusTunnelMediumType: 6
+radiusTunnelPrivateGroupId: 19
+radiusTunnelType: 13
+sambaAcctFlags: [UX]
+sambaHomeDrive: P:
+sambaHomePath: \\burtok-2\jdoe
+sambaKickoffTime: 2147483647
+sambaLogoffTime: 2147483647
+sambaLogonScript: samba.cmd
+sambaLogonTime: 0
+sambaPrimaryGroupSID: S-1-5-21-4005389593-33730136-839789604-513
+sambaPwdCanChange: 2147483647
+sambaPwdMustChange: 1107529756
+supannAffectation: DIRECTION DES SYSTEMES D'INFORMATION
+supannCivilite: M.
+supannEmpId: 19480
+supannEtablissement: {UAI}0593279U
+supannListeRouge: FALSE
+supannOrganisme: {EES}0593279U
+uvhcAliasMail: jdoe@uphf.fr
+uvhcAliasMail: John.Doe@uphf.fr
+uvhcOpenVPN: FALSE
+uvhcPersCategorie: AITOSS
+uvhcPersContrat: contractuel
+uvhcPersEDT: FALSE
+uvhcPersType: CHS
+uvhcPersTypeLong: Hors statut s/ressources propres
+uvhcsync: noSyncForward
+uvhczcs: zcs
+uvhcZimbra: TRUE

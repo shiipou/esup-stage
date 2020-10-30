@@ -1,9 +1,6 @@
 spring:
+  profiles:    include:    - embedded-ldap
+    - cas
   mail:
-    host: smtp.univ.fr
+    host: localhost
     port: 25
-  ldap:
-    urls:
-    - ldap://ldap.univ.fr
-    base: ou=accounts,dc=univ,dc=fr
-    anonymous-read-only: true

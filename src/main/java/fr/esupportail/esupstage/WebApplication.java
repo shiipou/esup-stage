@@ -7,12 +7,14 @@ package fr.esupportail.esupstage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 import fr.esupportail.esupstage.property.ApplicationProperties;
 
-@SpringBootApplication
+// @EnableCaching
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableConfigurationProperties(value = ApplicationProperties.class)
 public class WebApplication extends SpringBootServletInitializer {
 

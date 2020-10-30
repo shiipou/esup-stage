@@ -23,8 +23,8 @@ import springfox.documentation.annotations.ApiIgnore;
  * @author vagrant
  */
 @Slf4j
-@RestController
-@ApiIgnore
+//@RestController
+//@ApiIgnore
 public class GlobalErrorController extends AbstractErrorController {
 
     @Autowired

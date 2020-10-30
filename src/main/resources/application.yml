@@ -1,5 +1,7 @@
+---
 spring:
   profiles:    active:    - dev
+  jpa:    open-in-view: false
 logging:
   level:
     root: WARN
@@ -10,4 +12,35 @@ logging:
     max-history: 365
 application:
   title: esupstage
-  redirect-url: http://localhost:8080/
+  redirect-url: http://pc-dsi-dubus.adm.univ-valenciennes.fr:8080/swagger-ui/
+  security:    ldap-user-dn-patterns: uid={0},ou=people,dc=uphf,dc=fr
+...
+---
+spring:
+  profiles: ldap
+  ldap:
+    urls:
+    - ldap://ldap.uphf.fr:389
+    anonymous-read-only: true
+...
+---
+spring:
+  profiles: embedded-ldap
+  ldap:
+    embedded:
+      base-dn:
+      - dc=uphf,dc=fr
+      validation:
+        enabled: false
+      credential:
+        password: ''
+        username: ''
+...
+---
+spring:
+  profiles: cas
+cas:
+  server-url-prefix: https://cas.uphf.fr/cas
+  server-login-url: https://cas.uphf.fr/cas/login
+  client-host-url: http://pc-dsi-dubus.adm.univ-valenciennes.fr:8080
+...

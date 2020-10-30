@@ -26,22 +26,22 @@ import org.springframework.web.context.request.WebRequest;
  * @author vagrant
  */
 @Slf4j
-@Component
+//@Component
 public class ApiExceptionComponent {
     
-    @Autowired
-    private MailReportService reportService;
+//    @Autowired
+//    private MailReportService reportService;
 
-    @Autowired
-    private SmtpService smtpService;
+//    @Autowired
+//    private SmtpService smtpService;
     
-    @Value("${application.title}")
+//    @Value("${application.title}")
     private String applicationTitle;
 
-    @Value("${debug}")
+//    @Value("${debug}")
     private Boolean debug;
 
-    @Value("${spring.mail.exceptionEmail}")
+//    @Value("${spring.mail.exceptionEmail}")
     private String to;
     
     public ApiError buildErrorObject(Map<String, Object> attributes, WebRequest request, HttpStatus status) {
@@ -89,7 +89,7 @@ public class ApiExceptionComponent {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
             .getRequest();
 
-        MailReport report = reportService.getHtmlReport(request, applicationTitle, error);
+//        MailReport report = reportService.getHtmlReport(request, applicationTitle, error);
         
         StringBuilder errorMessage = new StringBuilder();
         if(error.getStatus() != null) {
@@ -115,6 +115,6 @@ public class ApiExceptionComponent {
         
         log.error(errorMessage.toString());
         
-        smtpService.sendException(to, report.getSubject(), report.getBody());
+//        smtpService.sendException(to, report.getSubject(), report.getBody());
     }
 }

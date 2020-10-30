@@ -1,4 +1,5 @@
 spring:
+  profiles:    include:    - ldap
   mail:
     host: smtp.uphf.fr
     port: 25
