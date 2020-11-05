@@ -12,7 +12,7 @@ logging:
     max-history: 365
 application:
   title: esupstage
-  redirect-url: http://pc-dsi-dubus.adm.univ-valenciennes.fr:8080/swagger-ui/
+  redirect-url: http://localhost:8080/swagger-ui/
   security:    ldap-user-dn-patterns: uid={0},ou=people,dc=uphf,dc=fr
 ...
 ---

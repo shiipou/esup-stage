@@ -28,9 +28,9 @@ import fr.esupportail.esupstage.property.ApplicationProperties;
 /**
  * @author vdubus
  */
-//@Configuration
-//@EnableWebSecurity
-//@EnableGlobalMethodSecurity(jsr250Enabled = true)
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(jsr250Enabled = true)
 public class CommonSecurityConfiguration {
 
 	private final ApplicationProperties applicationProperties;
