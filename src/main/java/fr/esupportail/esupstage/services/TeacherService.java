@@ -7,36 +7,36 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import fr.esupportail.esupstage.domain.jpa.Teacher;
-import fr.esupportail.esupstage.domain.jpa.EnseignantRepository;
+import fr.esupportail.esupstage.domain.jpa.TeacherRepository;
 import fr.esupportail.esupstage.exception.NotFoundException;
 import fr.esupportail.esupstage.services.beans.TeacherBean;
 
 @Service
 public class TeacherService {
 
-	private final EnseignantRepository enseignantRepository;
+	private final TeacherRepository teacherRepository;
 
 	@Autowired
-	public TeacherService(final EnseignantRepository enseignantRepository) {
+	public TeacherService(final TeacherRepository teacherRepository) {
 		super();
-		this.enseignantRepository = enseignantRepository;
+		this.teacherRepository = teacherRepository;
 	}
 
 	public Page<TeacherBean> findAll(final Pageable pageable) {
-		return this.enseignantRepository.findAll(pageable).map(TeacherService::convert);
+		return this.teacherRepository.findAll(pageable).map(TeacherService::convert);
 	}
 
 	public TeacherBean findById(final String email) {
-		return this.enseignantRepository.findById(email).map(TeacherService::convert)
+		return this.teacherRepository.findById(email).map(TeacherService::convert)
 				.orElseThrow(NotFoundException::new);
 	}
 
 	public TeacherBean save(final TeacherBean bean) {
-		return TeacherService.convert(this.enseignantRepository.save(TeacherService.convert(bean)));
+		return TeacherService.convert(this.teacherRepository.save(TeacherService.convert(bean)));
 	}
 
 	public void deleteBy(final String email) {
-		this.enseignantRepository.deleteById(email);
+		this.teacherRepository.deleteById(email);
 	}
 
 	public static TeacherBean convert(final Teacher feed) {

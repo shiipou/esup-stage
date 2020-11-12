@@ -16,12 +16,12 @@ import fr.esupportail.esupstage.services.beans.TeacherBean;
 
 @RestController
 @RequestMapping("/api/enseignants")
-public class EnseignantController {
+public class TeacherController {
 
 	private final TeacherService teacherService;
 
 	@Autowired
-	public EnseignantController(final TeacherService teacherService) {
+	public TeacherController(final TeacherService teacherService) {
 		super();
 		this.teacherService = teacherService;
 	}
