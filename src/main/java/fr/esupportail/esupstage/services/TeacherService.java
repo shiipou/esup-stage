@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import fr.esupportail.esupstage.domain.jpa.Enseignant;
+import fr.esupportail.esupstage.domain.jpa.Teacher;
 import fr.esupportail.esupstage.domain.jpa.EnseignantRepository;
 import fr.esupportail.esupstage.exception.NotFoundException;
 import fr.esupportail.esupstage.services.beans.TeacherBean;
@@ -39,14 +39,14 @@ public class TeacherService {
 		this.enseignantRepository.deleteById(email);
 	}
 
-	public static TeacherBean convert(final Enseignant feed) {
+	public static TeacherBean convert(final Teacher feed) {
 		final TeacherBean result = new TeacherBean();
 		BeanUtils.copyProperties(feed, result);
 		return result;
 	}
 
-	public static Enseignant convert(final TeacherBean feed) {
-		final Enseignant result = new Enseignant();
+	public static Teacher convert(final TeacherBean feed) {
+		final Teacher result = new Teacher();
 		BeanUtils.copyProperties(feed, result);
 		return result;
 	}
