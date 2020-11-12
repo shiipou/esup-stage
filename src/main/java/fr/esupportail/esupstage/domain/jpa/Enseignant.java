@@ -1,49 +1,37 @@
 package fr.esupportail.esupstage.domain.jpa;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
-
 @Entity
-@Table(name = "enseignants")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Enseignant {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
-	@NotEmpty
-	@Size(min = 6, max = 20)
-	@Column(name = "username")
-	private String username;
-
-	@NotEmpty
-	@Column(name = "email")
+	@Include
 	private String email;
 
-	@NotEmpty
-	@Column(name = "first_name")
-	private String firstname;
+	@Column(nullable = false)
+	private String firstName;
 
-	@NotEmpty
-	@Column(name = "last_name")
-	private String lastname;
+	@Column(nullable = false)
+	private String lastName;
 
-	@Column(name = "birth_date")
-	@NotNull
-	private Date birthDate;
-	
+	@Column(nullable = false)
+	private LocalDate birthDate;
+
 }

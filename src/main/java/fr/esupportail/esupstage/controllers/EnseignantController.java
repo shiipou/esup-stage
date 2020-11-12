@@ -1,10 +1,8 @@
 package fr.esupportail.esupstage.controllers;
 
-import java.util.List;
-
-import javax.annotation.security.RolesAllowed;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,34 +11,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.esupportail.esupstage.domain.jpa.Enseignant;
-import fr.esupportail.esupstage.domain.jpa.EnseignantRepository;
+import fr.esupportail.esupstage.services.TeacherService;
+import fr.esupportail.esupstage.services.beans.TeacherBean;
 
 @RestController
-@RolesAllowed("USER")
 @RequestMapping("/api/enseignants")
 public class EnseignantController {
 
-	@Autowired
-	private EnseignantRepository enseignantRepository;
+	private final TeacherService teacherService;
 
-	/**
-	 * @param auth
-	 * @return
-	 */
+	@Autowired
+	public EnseignantController(final TeacherService teacherService) {
+		super();
+		this.teacherService = teacherService;
+	}
+
 	@GetMapping
-	public List<Enseignant> index() {
-		return enseignantRepository.findAll();
+	public Page<TeacherBean> index(final Pageable pageable) {
+		return this.teacherService.findAll(pageable);
 	}
 
 	@PostMapping
-	public Enseignant index(@RequestBody Enseignant enseignant) {
-		enseignantRepository.save(enseignant);
-		return enseignant;
+	public TeacherBean index(@RequestBody final TeacherBean teacher) {
+		return this.teacherService.save(teacher);
 	}
 
-	@DeleteMapping("/{id}")
-	public void deleteEnseignant(@PathVariable Long id) {
-		enseignantRepository.deleteById(id);
+	@GetMapping("/{email}")
+	public TeacherBean findBy(@PathVariable final String email) {
+		return this.teacherService.findById(email);
+	}
+
+	@DeleteMapping("/{email}")
+	public void deleteEnseignant(@PathVariable final String email) {
+		this.teacherService.deleteBy(email);
 	}
 }
