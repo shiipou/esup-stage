@@ -1,5 +1,7 @@
 package fr.esupportail.esupstage.property;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +12,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class CASProperties {
+public class CASProperties implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Login end point from {@link #baseUrl}.
