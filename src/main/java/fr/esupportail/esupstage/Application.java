@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.esupportail.esupstage;
 
 import org.springframework.boot.SpringApplication;
@@ -17,7 +12,7 @@ import fr.esupportail.esupstage.property.ApplicationProperties;
 @EnableConfigurationProperties(value = ApplicationProperties.class)
 public class Application extends SpringBootServletInitializer {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(final String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
 	}
 
