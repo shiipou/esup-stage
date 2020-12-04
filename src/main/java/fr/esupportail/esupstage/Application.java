@@ -12,7 +12,7 @@ import fr.esupportail.esupstage.property.ApplicationProperties;
 @EnableConfigurationProperties(value = ApplicationProperties.class)
 public class Application extends SpringBootServletInitializer {
 
-	public static void main(final String[] args) throws Exception {
+	public static void main(final String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
