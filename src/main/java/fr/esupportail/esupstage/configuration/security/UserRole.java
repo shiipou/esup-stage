@@ -8,13 +8,15 @@ package fr.esupportail.esupstage.configuration.security;
 public enum UserRole {
 	USER;
 
+	private static final String ROLE_PREFIX = "ROLE_";
+
 	public static UserRole findBy(final String name) {
 		if (null == name) {
 			throw new IllegalArgumentException();
 		}
 		final String value;
-		if (name.startsWith("ROLE_")) {
-			value = name.replaceFirst("ROLE_", "");
+		if (name.startsWith(ROLE_PREFIX)) {
+			value = name.replaceFirst(ROLE_PREFIX, "");
 		} else {
 			value = name;
 		}
@@ -23,6 +25,6 @@ public enum UserRole {
 
 	@Override
 	public String toString() {
-		return "ROLE_" + super.toString();
+		return ROLE_PREFIX + super.toString();
 	}
 }
