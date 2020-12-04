@@ -13,13 +13,12 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 import fr.esupportail.esupstage.property.ApplicationProperties;
 
-// @EnableCaching
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableConfigurationProperties(value = ApplicationProperties.class)
-public class WebApplication extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(WebApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

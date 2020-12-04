@@ -1,4 +1,4 @@
-package fr.esupportail.esupstage.controllers;
+package fr.esupportail.esupstage.controllers.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
