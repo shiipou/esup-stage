@@ -9,9 +9,6 @@ import lombok.Setter;
 @Setter
 public class CSRFProperties implements Serializable {
 
-	/**
-	 * Serial ID.
-	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
