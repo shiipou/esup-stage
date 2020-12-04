@@ -21,10 +21,10 @@ import org.junit.jupiter.api.Test;
 /**
  * @author vdubus
  */
-public class ApplicationTest extends AbstractTest {
+class ApplicationTest extends AbstractTest {
 
 	@Test
-	public void testApplicationConfiguration() {
+	void testApplicationConfiguration() {
 		Assertions.assertTrue(true, "Just running to see if the configuration work.");
 	}
 

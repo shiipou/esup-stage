@@ -19,21 +19,21 @@ import fr.esupportail.esupstage.AbstractTest;
 
 @Rollback
 @Transactional
-public class TeacherRepositoryTest extends AbstractTest {
+class TeacherRepositoryTest extends AbstractTest {
 
 	private final EntityManager entityManager;
 
 	private final TeacherRepository teacherRepository;
 
 	@Autowired
-	public TeacherRepositoryTest(final EntityManager entityManager, final TeacherRepository teacherRepository) {
+	TeacherRepositoryTest(final EntityManager entityManager, final TeacherRepository teacherRepository) {
 		super();
 		this.entityManager = entityManager;
 		this.teacherRepository = teacherRepository;
 	}
 
 	@BeforeEach
-	public void prepare() {
+	void prepare() {
 		final Teacher teacher = new Teacher();
 		teacher.setBirthDate(LocalDate.of(1980, 01, 01));
 		teacher.setEmail("jdoe@uphf.fr");
@@ -46,7 +46,7 @@ public class TeacherRepositoryTest extends AbstractTest {
 
 	@Test
 	@DisplayName("findById – Nominal test case")
-	public void findById() {
+	void findById() {
 		final Optional<Teacher> result = this.teacherRepository.findById("jdoe@uphf.fr");
 		assertTrue(result.isPresent(), "We should have found our teacher");
 
