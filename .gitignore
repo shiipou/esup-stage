@@ -108,3 +108,7 @@ modules.xml
 .factorypath
 
 .classpath
+
+.sts4-cache/
+
+*.log
