@@ -97,10 +97,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-ldap</artifactId>
 		</dependency>
-			<groupId>org.jasig.cas.client</groupId>
-			<artifactId>cas-client-support-springboot</artifactId>
-			<version>${java.cas.client.version}</version>
-		</dependency>
 		<!-- LDAP -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
