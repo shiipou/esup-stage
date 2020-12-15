@@ -79,15 +79,9 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-
 		<!-- Spring security -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -107,7 +101,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
 		<!-- Database -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
@@ -137,31 +130,26 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-text</artifactId>
 			<version>${commons-text}</version>
 		</dependency>
-
 		<!-- Embedded LDAP -->
 		<dependency>
 			<groupId>com.unboundid</groupId>
 			<artifactId>unboundid-ldapsdk</artifactId>
 		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
 		<dependency>
 			<groupId>org.sonarsource.scanner.maven</groupId>
@@ -170,11 +158,15 @@
 		</dependency>
 		<!-- Tests -->
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.ldap</groupId>
 			<artifactId>spring-ldap-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
@@ -188,7 +180,6 @@
 			<groupId>org.joinfaces</groupId>
 			<artifactId>jsf-spring-boot-starter</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.joinfaces</groupId>
 			<artifactId>security-spring-boot-starter</artifactId>
