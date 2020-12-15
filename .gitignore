@@ -111,4 +111,4 @@ modules.xml
 
 .sts4-cache/
 
-*.log
+*.log*
