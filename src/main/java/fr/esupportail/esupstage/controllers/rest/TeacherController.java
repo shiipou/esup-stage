@@ -15,7 +15,7 @@ import fr.esupportail.esupstage.services.TeacherService;
 import fr.esupportail.esupstage.services.beans.TeacherBean;
 
 @RestController
-@RequestMapping("/api/enseignants")
+@RequestMapping("/api/teachers")
 public class TeacherController {
 
 	private final TeacherService teacherService;
@@ -27,12 +27,12 @@ public class TeacherController {
 	}
 
 	@GetMapping
-	public Page<TeacherBean> index(final Pageable pageable) {
+	public Page<TeacherBean> findAll(final Pageable pageable) {
 		return this.teacherService.findAll(pageable);
 	}
 
 	@PostMapping
-	public TeacherBean index(@RequestBody final TeacherBean teacher) {
+	public TeacherBean add(@RequestBody final TeacherBean teacher) {
 		return this.teacherService.save(teacher);
 	}
 
@@ -43,6 +43,6 @@ public class TeacherController {
 
 	@DeleteMapping("/{email}")
 	public void deleteEnseignant(@PathVariable final String email) {
-		this.teacherService.deleteBy(email);
+		this.teacherService.deleteById(email);
 	}
 }

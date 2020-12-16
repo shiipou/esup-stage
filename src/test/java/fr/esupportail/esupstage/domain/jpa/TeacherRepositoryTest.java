@@ -40,14 +40,14 @@ class TeacherRepositoryTest extends AbstractTest {
 		teacher.setFirstName("John");
 		teacher.setLastName("Doe");
 
-		this.entityManager.persist(teacher);
-		this.entityManager.flush();
+		entityManager.persist(teacher);
+		entityManager.flush();
 	}
 
 	@Test
 	@DisplayName("findById – Nominal test case")
 	void findById() {
-		final Optional<Teacher> result = this.teacherRepository.findById("jdoe@uphf.fr");
+		final Optional<Teacher> result = teacherRepository.findById("jdoe@uphf.fr");
 		assertTrue(result.isPresent(), "We should have found our teacher");
 
 		final Teacher teacher = result.get();

@@ -35,7 +35,7 @@ public class TeacherService {
 		return TeacherService.convert(this.teacherRepository.save(TeacherService.convert(bean)));
 	}
 
-	public void deleteBy(final String email) {
+	public void deleteById(final String email) {
 		this.teacherRepository.deleteById(email);
 	}
 
