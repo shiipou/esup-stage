@@ -27,6 +27,7 @@ class AccordPartenariatRepositoryTest extends AbstractTest {
     private final EntityManager entityManager;
 
     private final AccordPartenariatRepository accordPartenariatRepository;
+    private int accordPartenariatId;
 
     @Autowired
     AccordPartenariatRepositoryTest(final EntityManager entityManager,
@@ -121,20 +122,30 @@ class AccordPartenariatRepositoryTest extends AbstractTest {
 
 
         entityManager.persist(accordPartenariat);
-        System.out.println("THE ID IS");
-        System.out.println(accordPartenariat.getIdAccordPartenariat());
+        this.accordPartenariatId = accordPartenariat.getIdAccordPartenariat();
         entityManager.flush();
     }
 
     @Test
     @DisplayName("findById – Nominal test case")
     void findById() {
-        final Optional<AccordPartenariat> result = accordPartenariatRepository.findById(9);
+        final Optional<AccordPartenariat> result = accordPartenariatRepository.findById(this.accordPartenariatId);
         assertTrue(result.isPresent(), "We should have found our teacher");
 
         final AccordPartenariat accordPartenariat = result.get();
         assertEquals("login",accordPartenariat.getLoginCreation());
-        assertEquals(9,accordPartenariat.getIdAccordPartenariat());
+        assertEquals(this.accordPartenariatId,accordPartenariat.getIdAccordPartenariat());
+        assertEquals("Doe",accordPartenariat.getContact().getNom());
+        assertEquals("nom service",accordPartenariat.getContact().getService().getNom());
+        assertEquals("voie",accordPartenariat.getContact().getService().getStructure().getVoie());
+        assertEquals("libel",accordPartenariat.getContact().getService().getStructure().
+                getTypeStructure().getLibelleTypeStructure());
+        assertEquals("libel",accordPartenariat.getContact().getService().getStructure().
+                getEffectif().getLibelleEffectif());
+        assertEquals("lib",accordPartenariat.getContact().getService().getStructure().getPay().getLib());
+        assertEquals("codeuniv",accordPartenariat.getContact().getCentreGestion().getCodeUniversite());
+        assertEquals("libel",accordPartenariat.getContact().getCentreGestion().
+                getConfidentialite().getLibelleConfidentialite());
     }
 
 }
