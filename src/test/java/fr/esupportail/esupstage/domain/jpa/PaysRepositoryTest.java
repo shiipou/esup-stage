@@ -26,7 +26,7 @@ public class PaysRepositoryTest extends AbstractTest {
 
 	private final PaysRepository paysRepository;
 
-	private Integer idPays;
+	private Integer id;
 
 	@Autowired
 	PaysRepositoryTest(final EntityManager entityManager, final PaysRepository paysRepository) {
@@ -48,13 +48,13 @@ public class PaysRepositoryTest extends AbstractTest {
 		entityManager.flush();
 
 		entityManager.refresh(pays);
-		this.idPays = pays.getIdPays();
+		this.id = pays.getId();
 	}
 
 	@Test
 	@DisplayName("findById – Nominal test case")
 	void findById() {
-		final Optional<Pays> result = this.paysRepository.findById(idPays);
+		final Optional<Pays> result = this.paysRepository.findById(id);
 		assertTrue(result.isPresent(), "We should have found our entity");
 
 		final Pays tmp = result.get();

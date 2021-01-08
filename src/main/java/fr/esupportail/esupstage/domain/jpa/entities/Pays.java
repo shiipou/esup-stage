@@ -30,9 +30,9 @@ public class Pays implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "idPays")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(unique = true, nullable = false)
-	private Integer idPays;
+	private Integer id;
 
 	@Column(nullable = false)
 	private Integer actual;
