@@ -1,0 +1,1 @@
+package fr.esupportail.esupstage.configuration.jpa;
