@@ -23,38 +23,38 @@ class TeacherRepositoryTest extends AbstractTest {
 
 	private final EntityManager entityManager;
 
-	private final TeacherRepository teacherRepository;
+	private final TeacherRepository repository;
 
 	@Autowired
 	TeacherRepositoryTest(final EntityManager entityManager, final TeacherRepository teacherRepository) {
 		super();
 		this.entityManager = entityManager;
-		this.teacherRepository = teacherRepository;
+		this.repository = teacherRepository;
 	}
 
 	@BeforeEach
 	void prepare() {
-		final Teacher teacher = new Teacher();
-		teacher.setBirthDate(LocalDate.of(1980, 01, 01));
-		teacher.setEmail("jdoe@uphf.fr");
-		teacher.setFirstName("John");
-		teacher.setLastName("Doe");
+		final Teacher entity = new Teacher();
+		entity.setBirthDate(LocalDate.of(1980, 01, 01));
+		entity.setEmail("jdoe@uphf.fr");
+		entity.setFirstName("John");
+		entity.setLastName("Doe");
 
-		entityManager.persist(teacher);
+		entityManager.persist(entity);
 		entityManager.flush();
 	}
 
 	@Test
 	@DisplayName("findById – Nominal test case")
 	void findById() {
-		final Optional<Teacher> result = teacherRepository.findById("jdoe@uphf.fr");
-		assertTrue(result.isPresent(), "We should have found our teacher");
+		final Optional<Teacher> result = repository.findById("jdoe@uphf.fr");
+		assertTrue(result.isPresent(), "We should have found our entity");
 
-		final Teacher teacher = result.get();
-		assertEquals("jdoe@uphf.fr", teacher.getEmail());
-		assertEquals("John", teacher.getFirstName());
-		assertEquals("Doe", teacher.getLastName());
-		assertEquals(LocalDate.of(1980, 01, 01), teacher.getBirthDate());
+		final Teacher tmp = result.get();
+		assertEquals("jdoe@uphf.fr", tmp.getEmail());
+		assertEquals("John", tmp.getFirstName());
+		assertEquals("Doe", tmp.getLastName());
+		assertEquals(LocalDate.of(1980, 01, 01), tmp.getBirthDate());
 	}
 
 }
