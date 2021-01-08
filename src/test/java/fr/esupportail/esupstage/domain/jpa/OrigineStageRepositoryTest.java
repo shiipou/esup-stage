@@ -26,7 +26,7 @@ public class OrigineStageRepositoryTest extends AbstractTest {
 
 	private final OrigineStageRepository origineStageRepository;
 
-	private Integer idOrigineStage;
+	private Integer id;
 
 	@Autowired
 	OrigineStageRepositoryTest(final EntityManager entityManager, final OrigineStageRepository origineStageRepository) {
@@ -38,7 +38,7 @@ public class OrigineStageRepositoryTest extends AbstractTest {
 	@BeforeEach
 	void prepare() {
 		final OrigineStage origineStage = new OrigineStage();
-		origineStage.setLibelleOrigineStage("Label");
+		origineStage.setLabel("Label");
 		origineStage.setTemEnServOrigineStage("A");
 		origineStage.setModifiable(true);
 
@@ -46,17 +46,17 @@ public class OrigineStageRepositoryTest extends AbstractTest {
 		entityManager.flush();
 
 		entityManager.refresh(origineStage);
-		this.idOrigineStage = origineStage.getIdOrigineStage();
+		this.id = origineStage.getId();
 	}
 
 	@Test
 	@DisplayName("findById – Nominal test case")
 	void findById() {
-		final Optional<OrigineStage> result = origineStageRepository.findById(this.idOrigineStage);
+		final Optional<OrigineStage> result = origineStageRepository.findById(this.id);
 		assertTrue(result.isPresent(), "We should have found our entity");
 
 		final OrigineStage tmp = result.get();
-		assertEquals("Label", tmp.getLibelleOrigineStage());
+		assertEquals("Label", tmp.getLabel());
 		assertEquals("A", tmp.getTemEnServOrigineStage());
 		assertTrue(tmp.isModifiable());
 	}

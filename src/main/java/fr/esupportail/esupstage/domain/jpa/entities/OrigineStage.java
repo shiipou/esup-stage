@@ -30,12 +30,12 @@ public class OrigineStage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "idOrigineStage")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(unique = true, nullable = false)
-	private Integer idOrigineStage;
+	private Integer id;
 
-	@Column(nullable = false, length = 45)
-	private String libelleOrigineStage;
+	@Column(name = "libelleOrigineStage", nullable = false, length = 45)
+	private String label;
 
 	private boolean modifiable;
 
