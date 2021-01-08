@@ -20,7 +20,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @NamedQuery(name = "Service.findAll", query = "SELECT s FROM Service s")
-public class Service implements Serializable {
+public class Service extends Auditable<String> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,16 +34,12 @@ public class Service implements Serializable {
     private String codePostal;
     @Column(length = 200)
     private String commune;
-    @Column(nullable = false)
-    private Date dateCreation;
-    private Date dateModif;
+
     private Date infosAJour;
-    @Column(nullable = false, length = 50)
-    private String loginCreation;
+
     @Column(length = 50)
     private String loginInfosAJour;
-    @Column(length = 50)
-    private String loginModif;
+
     @Column(nullable = false, length = 70)
     private String nom;
     @Column(length = 20)

@@ -93,8 +93,6 @@ class AccordPartenariatRepositoryTest extends AbstractTest {
 
         final Service service = new Service();
         service.setCodePostal("17000");
-        service.setDateCreation(new Date());
-        service.setLoginCreation("login");
         service.setNom("nom service");
         service.setPay(pays);
         service.setStructure(structure);
