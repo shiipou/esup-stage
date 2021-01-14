@@ -3,6 +3,7 @@ package fr.esupportail.esupstage.domain.jpa;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Rollback;
 
 import fr.esupportail.esupstage.AbstractTest;
@@ -23,6 +25,7 @@ import fr.esupportail.esupstage.domain.jpa.repositories.StructureRepository;
 
 @Rollback
 @Transactional
+@WithMockUser(username = "jdoe", password = "jdoe")
 public class StructureRepositoryTest extends AbstractTest {
 
 	private final EntityManager entityManager;
@@ -83,6 +86,8 @@ public class StructureRepositoryTest extends AbstractTest {
 		assertEquals(1, tmp.getEstValidee());
 		assertEquals("Street", tmp.getVoie());
 		assertEquals("ESN", tmp.getRaisonSociale());
+		assertEquals("jdoe", tmp.getCreatedBy());
+		assertEquals(LocalDateTime.now().toLocalDate(), tmp.getCreatedDate().toLocalDate());
 	}
 
 }
