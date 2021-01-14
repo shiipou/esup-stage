@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,9 +17,13 @@ import java.util.List;
 @Table(name = "CentreGestionSuperViseur")
 @Getter
 @Setter
-@NoArgsConstructor
 @NamedQuery(name = "CentreGestionSuperViseur.findAll", query = "SELECT c FROM CentreGestionSuperViseur c")
 public class CentreGestionSuperViseur implements Serializable {
+
+    public CentreGestionSuperViseur() {
+        this.centreGestions = new ArrayList<>();
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

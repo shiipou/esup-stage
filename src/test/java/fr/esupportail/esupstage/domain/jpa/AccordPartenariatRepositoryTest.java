@@ -9,6 +9,9 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import fr.esupportail.esupstage.domain.jpa.entities.*;
+import fr.esupportail.esupstage.domain.jpa.repositories.AccordPartenariatRepository;
+import org.eclipse.jdt.internal.compiler.env.IModule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

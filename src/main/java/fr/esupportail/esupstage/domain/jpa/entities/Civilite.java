@@ -3,9 +3,11 @@ package fr.esupportail.esupstage.domain.jpa.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang.ArrayUtils;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,8 +19,14 @@ import java.util.List;
 @NamedQuery(name = "Civilite.findAll", query = "SELECT c FROM Civilite c")
 @Getter
 @Setter
-@NoArgsConstructor
 public class Civilite implements Serializable {
+
+    public Civilite() {
+        this.adminStructures = new ArrayList<>();
+        this.contacts = new ArrayList<>();
+        this.personnelCentreGestions = new ArrayList<>();
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
