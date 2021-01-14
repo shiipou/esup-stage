@@ -33,7 +33,7 @@ public abstract class Auditable<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@CreatedBy
-	@Column(name = "loginCreation")
+	@Column(name = "loginCreation", length = 50)
 	private T createdBy;
 
 	@CreatedDate
@@ -42,7 +42,7 @@ public abstract class Auditable<T> implements Serializable {
 	private LocalDateTime createdDate;
 
 	@LastModifiedBy
-	@Column(name = "loginModif")
+	@Column(name = "loginModif", length = 50)
 	private T modifiedBy;
 
 	@LastModifiedDate
