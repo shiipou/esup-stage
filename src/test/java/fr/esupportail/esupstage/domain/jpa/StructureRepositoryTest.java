@@ -3,7 +3,6 @@ package fr.esupportail.esupstage.domain.jpa;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Calendar;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -13,30 +12,27 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Rollback;
 
 import fr.esupportail.esupstage.AbstractTest;
 import fr.esupportail.esupstage.domain.jpa.entities.Effectif;
 import fr.esupportail.esupstage.domain.jpa.entities.Pays;
-import fr.esupportail.esupstage.domain.jpa.entities.Service;
 import fr.esupportail.esupstage.domain.jpa.entities.Structure;
 import fr.esupportail.esupstage.domain.jpa.entities.TypeStructure;
-import fr.esupportail.esupstage.domain.jpa.repositories.ServiceRepository;
+import fr.esupportail.esupstage.domain.jpa.repositories.StructureRepository;
 
 @Rollback
 @Transactional
-@WithMockUser(username = "jdoe", password = "jdoe")
-public class ServiceRepositoryTest extends AbstractTest {
+public class StructureRepositoryTest extends AbstractTest {
 
 	private final EntityManager entityManager;
 
-	private final ServiceRepository repository;
+	private final StructureRepository repository;
 
 	private Integer id;
 
 	@Autowired
-	ServiceRepositoryTest(final EntityManager entityManager, final ServiceRepository repository) {
+	StructureRepositoryTest(final EntityManager entityManager, final StructureRepository repository) {
 		super();
 		this.entityManager = entityManager;
 		this.repository = repository;
@@ -59,8 +55,8 @@ public class ServiceRepositoryTest extends AbstractTest {
 
 		final TypeStructure typeStructure = new TypeStructure();
 		typeStructure.setTemEnServTypeStructure("A");
-		typeStructure.setLibelleTypeStructure("Label");
 		typeStructure.setSiretObligatoire(true);
+		typeStructure.setLibelleTypeStructure("Label");
 		entityManager.persist(typeStructure);
 
 		final Structure structure = new Structure();
@@ -72,30 +68,21 @@ public class ServiceRepositoryTest extends AbstractTest {
 		structure.setTypeStructure(typeStructure);
 		entityManager.persist(structure);
 
-		final Service service = new Service();
-		service.setCodePostal("59000");
-		service.setNom("Service");
-		service.setVoie("Street");
-		service.setPay(pays);
-		service.setStructure(structure);
-		entityManager.persist(service);
 		entityManager.flush();
-
-		entityManager.refresh(service);
-		id = service.getIdService();
+		entityManager.refresh(structure);
+		id = structure.getIdStructure();
 	}
 
 	@Test
 	@DisplayName("findById – Nominal Test Case")
 	void findById() {
-		final Optional<Service> result = repository.findById(id);
+		final Optional<Structure> result = repository.findById(id);
 		assertTrue(result.isPresent(), "We should have found our entity");
 
-		final Service tmp = result.get();
-		assertEquals("jdoe", tmp.getCreatedBy());
-		assertEquals("59000", tmp.getCodePostal());
-		assertEquals("Service", tmp.getNom());
+		final Structure tmp = result.get();
+		assertEquals(1, tmp.getEstValidee());
 		assertEquals("Street", tmp.getVoie());
+		assertEquals("ESN", tmp.getRaisonSociale());
 	}
 
 }
