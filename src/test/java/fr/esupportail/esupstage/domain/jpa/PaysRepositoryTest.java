@@ -3,6 +3,7 @@ package fr.esupportail.esupstage.domain.jpa;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -24,7 +25,7 @@ public class PaysRepositoryTest extends AbstractTest {
 
 	private final EntityManager entityManager;
 
-	private final PaysRepository paysRepository;
+	private final PaysRepository repository;
 
 	private Integer id;
 
@@ -32,7 +33,7 @@ public class PaysRepositoryTest extends AbstractTest {
 	PaysRepositoryTest(final EntityManager entityManager, final PaysRepository paysRepository) {
 		super();
 		this.entityManager = entityManager;
-		this.paysRepository = paysRepository;
+		this.repository = paysRepository;
 	}
 
 	@BeforeEach
@@ -43,6 +44,7 @@ public class PaysRepositoryTest extends AbstractTest {
 		pays.setLib("Label");
 		pays.setSiretObligatoire(true);
 		pays.setTemEnServPays("A");
+		pays.setIso2("FR");
 
 		entityManager.persist(pays);
 		entityManager.flush();
@@ -54,7 +56,7 @@ public class PaysRepositoryTest extends AbstractTest {
 	@Test
 	@DisplayName("findById – Nominal test case")
 	void findById() {
-		final Optional<Pays> result = paysRepository.findById(id);
+		final Optional<Pays> result = repository.findById(id);
 		assertTrue(result.isPresent(), "We should have found our entity");
 
 		final Pays tmp = result.get();
@@ -62,6 +64,22 @@ public class PaysRepositoryTest extends AbstractTest {
 		assertEquals(1, tmp.getActual());
 		assertEquals(1, tmp.getCog());
 		assertEquals("A", tmp.getTemEnServPays());
+		assertEquals("FR", tmp.getIso2());
+		assertTrue(tmp.isSiretObligatoire());
+	}
+
+	@Test
+	@DisplayName("findByIso2ContainingIgnoreCase – Nominal test case")
+	void findByIso2ContainingIgnoreCase() {
+		final List<Pays> result = repository.findByIso2ContainingIgnoreCase("fr");
+		assertEquals(1, result.size());
+
+		final Pays tmp = result.get(0);
+		assertEquals("Label", tmp.getLib());
+		assertEquals(1, tmp.getActual());
+		assertEquals(1, tmp.getCog());
+		assertEquals("A", tmp.getTemEnServPays());
+		assertEquals("FR", tmp.getIso2());
 		assertTrue(tmp.isSiretObligatoire());
 	}
 
