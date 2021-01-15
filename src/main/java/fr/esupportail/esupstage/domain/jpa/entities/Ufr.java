@@ -1,44 +1,52 @@
 package fr.esupportail.esupstage.domain.jpa.entities;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
 
 /**
  * The persistent class for the Ufr database table.
  *
  */
 @Entity
-@Table(name = "Ufr")
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "Ufr")
 @NamedQuery(name = "Ufr.findAll", query = "SELECT u FROM Ufr u")
 public class Ufr implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    private UfrPK id;
-    @Column(nullable = false, length = 100)
-    private String libelleUFR;
-    // bi-directional many-to-one association to Convention
-    @OneToMany(mappedBy = "ufr")
-    private List<Convention> conventions;
 
+	private static final long serialVersionUID = 1L;
 
-    public Convention addConvention(Convention convention) {
-        getConventions().add(convention);
-        convention.setUfr(this);
-        return convention;
-    }
+	@EmbeddedId
+	private UfrPK id;
 
-    public Convention removeConvention(Convention convention) {
-        getConventions().remove(convention);
-        convention.setUfr(null);
-        return convention;
-    }
+	@Column(nullable = false, length = 100)
+	private String libelleUFR;
+
+	@OneToMany(mappedBy = "ufr")
+	private List<Convention> conventions;
+
+	public Convention addConvention(Convention convention) {
+		getConventions().add(convention);
+		convention.setUfr(this);
+		return convention;
+	}
+
+	public Convention removeConvention(Convention convention) {
+		getConventions().remove(convention);
+		convention.setUfr(null);
+		return convention;
+	}
+
 }
