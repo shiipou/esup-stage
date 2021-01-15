@@ -46,13 +46,13 @@ public class OrigineStageRepositoryTest extends AbstractTest {
 		entityManager.flush();
 
 		entityManager.refresh(origineStage);
-		this.id = origineStage.getId();
+		id = origineStage.getId();
 	}
 
 	@Test
 	@DisplayName("findById – Nominal test case")
 	void findById() {
-		final Optional<OrigineStage> result = origineStageRepository.findById(this.id);
+		final Optional<OrigineStage> result = origineStageRepository.findById(id);
 		assertTrue(result.isPresent(), "We should have found our entity");
 
 		final OrigineStage tmp = result.get();

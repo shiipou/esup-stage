@@ -52,7 +52,7 @@ public class StatutJuridiqueRepositoryTest extends AbstractTest {
 
 		entityManager.flush();
 		entityManager.refresh(statutJuridique);
-		this.id = statutJuridique.getIdStatutJuridique();
+		id = statutJuridique.getIdStatutJuridique();
 	}
 
 	@Test

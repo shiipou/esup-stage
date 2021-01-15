@@ -9,9 +9,6 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import fr.esupportail.esupstage.domain.jpa.entities.*;
-import fr.esupportail.esupstage.domain.jpa.repositories.AccordPartenariatRepository;
-import org.eclipse.jdt.internal.compiler.env.IModule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -125,19 +122,19 @@ class AccordPartenariatRepositoryTest extends AbstractTest {
 		accordPartenariat.setLoginCreation("login");
 
 		entityManager.persist(accordPartenariat);
-		this.accordPartenariatId = accordPartenariat.getIdAccordPartenariat();
+		accordPartenariatId = accordPartenariat.getIdAccordPartenariat();
 		entityManager.flush();
 	}
 
 	@Test
 	@DisplayName("findById – Nominal test case")
 	void findById() {
-		final Optional<AccordPartenariat> result = accordPartenariatRepository.findById(this.accordPartenariatId);
+		final Optional<AccordPartenariat> result = accordPartenariatRepository.findById(accordPartenariatId);
 		assertTrue(result.isPresent(), "We should have found our teacher");
 
 		final AccordPartenariat accordPartenariat = result.get();
 		assertEquals("login", accordPartenariat.getLoginCreation());
-		assertEquals(this.accordPartenariatId, accordPartenariat.getIdAccordPartenariat());
+		assertEquals(accordPartenariatId, accordPartenariat.getIdAccordPartenariat());
 		assertEquals("Doe", accordPartenariat.getContact().getNom());
 		assertEquals("nom service", accordPartenariat.getContact().getService().getNom());
 		assertEquals("voie", accordPartenariat.getContact().getService().getStructure().getVoie());

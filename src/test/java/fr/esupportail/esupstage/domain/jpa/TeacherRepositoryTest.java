@@ -29,7 +29,7 @@ class TeacherRepositoryTest extends AbstractTest {
 	TeacherRepositoryTest(final EntityManager entityManager, final TeacherRepository teacherRepository) {
 		super();
 		this.entityManager = entityManager;
-		this.repository = teacherRepository;
+		repository = teacherRepository;
 	}
 
 	@BeforeEach

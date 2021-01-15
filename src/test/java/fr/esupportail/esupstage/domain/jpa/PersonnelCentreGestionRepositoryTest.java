@@ -41,7 +41,7 @@ public class PersonnelCentreGestionRepositoryTest extends AbstractTest {
 	PersonnelCentreGestionRepositoryTest(final EntityManager entityManager, final PersonnelCentreGestionRepository personnelCentreGestionRepository) {
 		super();
 		this.entityManager = entityManager;
-		this.repository = personnelCentreGestionRepository;
+		repository = personnelCentreGestionRepository;
 	}
 
 	@BeforeEach
@@ -75,7 +75,7 @@ public class PersonnelCentreGestionRepositoryTest extends AbstractTest {
 		centreGestion.setConfidentialite(confidentialite);
 		centreGestion.setNiveauCentre(niveauCentre);
 		entityManager.persist(centreGestion);
-		
+
 		final DroitAdministration droitAdministration = new DroitAdministration();
 		droitAdministration.setLibelleDroitAdministration("Label");
 		droitAdministration.setTemEnServDroitAdmin("A");
@@ -100,7 +100,7 @@ public class PersonnelCentreGestionRepositoryTest extends AbstractTest {
 	@Test
 	@DisplayName("findById – Nominal test case")
 	void findById() {
-		final Optional<PersonnelCentreGestion> result = this.repository.findById(id);
+		final Optional<PersonnelCentreGestion> result = repository.findById(id);
 		assertTrue(result.isPresent(), "We should have found our entity");
 
 		final PersonnelCentreGestion tmp = result.get();

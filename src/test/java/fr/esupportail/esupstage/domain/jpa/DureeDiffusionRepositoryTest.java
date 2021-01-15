@@ -1,60 +1,59 @@
 package fr.esupportail.esupstage.domain.jpa;
 
-import fr.esupportail.esupstage.AbstractTest;
-import fr.esupportail.esupstage.domain.jpa.entities.DroitAdministration;
-import fr.esupportail.esupstage.domain.jpa.entities.DureeDiffusion;
-import fr.esupportail.esupstage.domain.jpa.repositories.DroitAdministrationRepository;
-import fr.esupportail.esupstage.domain.jpa.repositories.DureeDiffusionRepository;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import fr.esupportail.esupstage.AbstractTest;
+import fr.esupportail.esupstage.domain.jpa.entities.DureeDiffusion;
+import fr.esupportail.esupstage.domain.jpa.repositories.DureeDiffusionRepository;
 
 @Rollback
 @Transactional
 class DureeDiffusionRepositoryTest extends AbstractTest {
 
-		private final EntityManager entityManager;
+	private final EntityManager entityManager;
 
-		private final DureeDiffusionRepository dureeDiffusionRepository;
-		private int dureeDiffusionId;
+	private final DureeDiffusionRepository dureeDiffusionRepository;
 
-		@Autowired DureeDiffusionRepositoryTest(final EntityManager entityManager,
-				final DureeDiffusionRepository dureeDiffusionRepository) {
-				super();
-				this.entityManager = entityManager;
-				this.dureeDiffusionRepository = dureeDiffusionRepository;
-		}
+	private int dureeDiffusionId;
 
-		@BeforeEach
-		void prepare() {
+	@Autowired
+	DureeDiffusionRepositoryTest(final EntityManager entityManager, final DureeDiffusionRepository dureeDiffusionRepository) {
+		super();
+		this.entityManager = entityManager;
+		this.dureeDiffusionRepository = dureeDiffusionRepository;
+	}
 
-				DureeDiffusion dureeDiffusion = new DureeDiffusion();
-				dureeDiffusion.setLibelleDureeDiffusion("libel");
-				entityManager.persist(dureeDiffusion);
+	@BeforeEach
+	void prepare() {
 
-				this.dureeDiffusionId = dureeDiffusion.getIdDureeDiffusion();
-				entityManager.flush();
-		}
+		final DureeDiffusion dureeDiffusion = new DureeDiffusion();
+		dureeDiffusion.setLibelleDureeDiffusion("libel");
+		entityManager.persist(dureeDiffusion);
 
+		dureeDiffusionId = dureeDiffusion.getIdDureeDiffusion();
+		entityManager.flush();
+	}
 
-		@Test
-		@DisplayName("findById – Nominal test case")
-		void findById() {
-				final Optional<DureeDiffusion> result = dureeDiffusionRepository.findById(this.dureeDiffusionId);
-				assertTrue(result.isPresent(), "We should have found our DureeDiffusion");
+	@Test
+	@DisplayName("findById – Nominal test case")
+	void findById() {
+		final Optional<DureeDiffusion> result = dureeDiffusionRepository.findById(dureeDiffusionId);
+		assertTrue(result.isPresent(), "We should have found our DureeDiffusion");
 
-				final DureeDiffusion dureeDiffusion = result.get();
-				assertEquals("libel",dureeDiffusion.getLibelleDureeDiffusion());
-		}
-
+		final DureeDiffusion dureeDiffusion = result.get();
+		assertEquals("libel", dureeDiffusion.getLibelleDureeDiffusion());
+	}
 
 }

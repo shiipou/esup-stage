@@ -1,13 +1,13 @@
 package fr.esupportail.esupstage.domain.jpa;
 
-import java.util.Date;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import fr.esupportail.esupstage.domain.jpa.entities.*;
-import fr.esupportail.esupstage.domain.jpa.repositories.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,47 +15,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 
 import fr.esupportail.esupstage.AbstractTest;
-
-import static org.junit.jupiter.api.Assertions.*;
+import fr.esupportail.esupstage.domain.jpa.entities.Categorie;
+import fr.esupportail.esupstage.domain.jpa.repositories.CategorieRepository;
 
 @Rollback
 @Transactional
 class CategorieRepositoryTest extends AbstractTest {
 
-		private final EntityManager entityManager;
+	private final EntityManager entityManager;
 
-		private final CategorieRepository categorieRepository;
-		private int categorieId;
+	private final CategorieRepository categorieRepository;
 
-		@Autowired
-		CategorieRepositoryTest(final EntityManager entityManager,
-				final CategorieRepository categorieRepository) {
-				super();
-				this.entityManager = entityManager;
-				this.categorieRepository = categorieRepository;
-		}
+	private int categorieId;
 
-		@BeforeEach
-		void prepare() {
+	@Autowired
+	CategorieRepositoryTest(final EntityManager entityManager, final CategorieRepository categorieRepository) {
+		super();
+		this.entityManager = entityManager;
+		this.categorieRepository = categorieRepository;
+	}
 
-				Categorie categorie = new Categorie();
-				categorie.setTypeCategorie(1);
+	@BeforeEach
+	void prepare() {
 
-				entityManager.persist(categorie);
-				this.categorieId = categorie.getIdCategorie();
-				entityManager.flush();
-		}
+		final Categorie categorie = new Categorie();
+		categorie.setTypeCategorie(1);
 
+		entityManager.persist(categorie);
+		categorieId = categorie.getIdCategorie();
+		entityManager.flush();
+	}
 
-		@Test
-		@DisplayName("findById – Nominal test case")
-		void findById() {
-				final Optional<Categorie> result = categorieRepository.findById(this.categorieId);
-				assertTrue(result.isPresent(), "We should have found our Categorie");
+	@Test
+	@DisplayName("findById – Nominal test case")
+	void findById() {
+		final Optional<Categorie> result = categorieRepository.findById(categorieId);
+		assertTrue(result.isPresent(), "We should have found our Categorie");
 
-				final Categorie categorie = result.get();
-				assertEquals(1,categorie.getTypeCategorie());
+		final Categorie categorie = result.get();
+		assertEquals(1, categorie.getTypeCategorie());
 
-		}
+	}
 
 }
