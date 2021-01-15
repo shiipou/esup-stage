@@ -53,16 +53,15 @@ class AdminStructureRepositoryTest extends AbstractTest {
 		this.adminStructureId = adminStructure.getIdAdminStructure();
 	}
 
-    @Test
-    @DisplayName("findById – Nominal test case")
-    void findById() {
+	@Test
+	@DisplayName("findById – Nominal test case")
+	void findById() {
+		final Optional<AdminStructure> result = adminStructureRepository.findById(adminStructureId);
+		assertTrue(result.isPresent(), "We should have found our teacher");
 
-        final Optional<AdminStructure> result = adminStructureRepository.findById(adminStructureId);
-        assertTrue(result.isPresent(), "We should have found our teacher");
-
-        final AdminStructure adminStructure = result.get();
-        assertEquals(new Date(0),adminStructure.getDateCreation());
-        assertEquals("login",adminStructure.getLoginCreation());
-    }
+		final AdminStructure adminStructure = result.get();
+		assertEquals(new Date(0),adminStructure.getDateCreation());
+		assertEquals("login",adminStructure.getLoginCreation());
+	}
 
 }
