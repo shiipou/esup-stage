@@ -6,7 +6,8 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
+      naming:        physical-strategy: fr.esupportail.esupstage.configuration.jpa.ESUPPhysicalNamingStrategy
 joinfaces:
     jsf:
       PROJECT_STAGE: Development
@@ -49,6 +50,18 @@ spring:
       credential:
         password: ''
         username: ''
+...
+---
+spring:
+  profiles: mariadb
+  datasource:
+    url: jdbc:mariadb://localhost:3306/esupstage
+    username: ''
+    password: ''
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MariaDB103Dialect
+      hibernate.dialect.storage_engine: innodb
 ...
 ---
 spring:
