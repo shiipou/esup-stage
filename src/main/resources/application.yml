@@ -17,9 +17,9 @@ joinfaces:
 logging:
   level:
     root: WARN
-    org.springframework: WARN     
+    org.springframework: WARN
     org.springframework.boot: INFO
-    org.hibernate.SQL: ERROR      
+    org.hibernate.SQL: ERROR
     fr.esupportail.esupstage: INFO
   file:
     path: /home/xxx/logs/esupstage
