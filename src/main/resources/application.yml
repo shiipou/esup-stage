@@ -64,11 +64,3 @@ spring:
       '[hibernate.dialect]': org.hibernate.dialect.MariaDB103Dialect
       '[hibernate.dialect.storage_engine]': innodb
 ...
----
-spring:
-  profiles: cas
-cas:
-  server-url-prefix: https://cas.uphf.fr/cas
-  server-login-url: https://cas.uphf.fr/cas/login
-  client-host-url: http://pc-dsi-dubus.adm.univ-valenciennes.fr:8080
-...
