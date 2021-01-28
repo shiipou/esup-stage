@@ -17,10 +17,10 @@ joinfaces:
 logging:
   level:
     root: WARN
-    org.springframework: WARN
-    org.springframework.boot: INFO
-    org.hibernate.SQL: ERROR
-    fr.esupportail.esupstage: INFO
+    '[org.springframework]': WARN
+    '[org.springframework.boot]': INFO
+    '[org.hibernate.SQL]': ERROR
+    '[fr.esupportail.esupstage]': INFO
   file:
     path: /home/xxx/logs/esupstage
     name: esupstage.log
@@ -61,8 +61,8 @@ spring:
     password: ''
   jpa:
     properties:
-      hibernate.dialect: org.hibernate.dialect.MariaDB103Dialect
-      hibernate.dialect.storage_engine: innodb
+      '[hibernate.dialect]': org.hibernate.dialect.MariaDB103Dialect
+      '[hibernate.dialect.storage_engine]': innodb
 ...
 ---
 spring:
