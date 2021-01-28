@@ -7,7 +7,8 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: none
-      naming:        physical-strategy: fr.esupportail.esupstage.configuration.jpa.ESUPPhysicalNamingStrategy
+      naming:
+        physical-strategy: fr.esupportail.esupstage.configuration.jpa.ESUPPhysicalNamingStrategy
 joinfaces:
     jsf:
       PROJECT_STAGE: Development
