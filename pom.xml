@@ -36,6 +36,7 @@
 		<commons-text>1.9</commons-text>
 		<java.cas.client.version>3.6.1</java.cas.client.version>
 		<joinfaces.version>4.3.6</joinfaces.version>
+		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 	</properties>
 
 	<repositories>
