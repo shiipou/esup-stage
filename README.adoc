@@ -10,6 +10,9 @@
 :uri-fakesmpt: http://nilhcem.com/FakeSMTP
 :uri-asciidoctor: https://asciidoctor.org
 :uri-asciidoctor-syntax: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference
+:uri-atom: https://atom.io
+:uri-atom-packages: {uri-atom}/packages
+:uri-atom-packages-asciidoc-assistant: {uri-atom-packages}/asciidoc-assistant
 
 image:{uri-build-status}[Status, link={uri-repo}]
 image:{uri-sonarcloud-badge}[Sonarcloud, link={uri-sonarcloud-project}]
@@ -29,7 +32,8 @@ We can access it from http://localhost:8080/swagger-ui/[/swagger-ui/].
 
 === AsciiDoctor
 
-We use the Asciidoc {uri-asciidoctor-syntax}[syntax] to write the documentation.
+We use the Asciidoc {uri-asciidoctor-syntax}[syntax] to write the documentation. +
+On {uri-atom}[Atom], we can install the package {uri-atom-packages-asciidoc-assistant}[asciidoc-assistant] to help us write the documentation.
 
 === FakeSMTP
 
@@ -39,3 +43,36 @@ To test the sending of email in development, we can use {uri-fakesmpt}[FakeSMTP]
 ----
 java -jar fakeSMTP-2.0.jar -o ./fakeSMTP-output
 ----
+
+== System specific configuration
+
+To overwrite the configuration for a specific system, we can simply add the following property `spring.config.additional-location` to the launch configuration. This property take a path to a directory containing any number of `application(-*).yml` files in which we can overwrite parameters.
+
+.example of property launch configuration
+[source,properties]
+----
+spring.config.additional-location=C:/development/config/ESUP/Stage/
+----
+
+.example of `application.yml` content
+[source,yaml]
+----
+---
+spring:
+  profiles:
+    include: # <1>
+    - embedded-ldap
+    - mariadb
+...
+---
+spring:
+  profiles: mariadb # <2>
+  datasource: # <3>
+    url: jdbc:mariadb://localhost:3306/esupstage
+    username: esupstage
+    password: esupstage
+...
+----
+<1> Configure the list of profiles to be used.
+<2> Overwrite the profiles which need to be configured for your specific use case.
+<3> Overwrite here specific values which we don't want to push on the Git repository.
