@@ -21,18 +21,37 @@
             <li>
                 <p:link href="/index.xhtml" onclick="clearBreadCrumbs()">
                     <i class="fa fa-home"></i>
-                    <span>Home</span>
+                    <span>Accueil</span>
                 </p:link>
             </li>
-            <li class="header">
-                General
+        </ul>
+        <ul class="sidebar-menu tree" data-widget="tree">
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>Conventions de Stage</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <p:link outcome="index.xhtml">
+                            <i class="fa fa-search"></i>
+                            <span>Rechercher une convention</span>
+                        </p:link>
+                    </li>
+                    <li>
+                        <p:link outcome="/new-convention.xhtml">
+                            <i class="fa fa-plus"></i>
+                            <span>Créer une convention</span>
+                        </p:link>
+                    </li>
+
+
+                </ul>
             </li>
-            <li>
-                <p:link href="/car-list.xhtml">
-                    <i class="fa fa-car"></i>
-                    <span>Cars</span>
-                </p:link>
-            </li>
+
         </ul>
     </ui:define>
 
