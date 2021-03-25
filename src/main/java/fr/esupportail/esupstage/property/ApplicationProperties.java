@@ -26,7 +26,16 @@ public class ApplicationProperties implements Serializable {
 	 * Where to redirect the application on login.
 	 */
 	private String redirectUrl;
+	
+	/**
+	 * Configuration for the CAS authentication.
+	 */
+	@NestedConfigurationProperty
+	private CASProperties cas = new CASProperties();
 
+	/**
+	 * Configuration for CORS.
+	 */
 	@NestedConfigurationProperty
 	private CORSProperties cors = new CORSProperties();
 

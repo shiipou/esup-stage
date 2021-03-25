@@ -64,3 +64,11 @@ spring:
       '[hibernate.dialect]': org.hibernate.dialect.MariaDB103Dialect
       '[hibernate.dialect.storage_engine]': innodb
 ...
+---
+spring:
+  profiles: cas
+application:  cas:    base-url: http://localhost:8085/cas
+    call-back-url: http://localhost:8080
+    login-end-point: /login
+    logout-end-point: /logout
+...
