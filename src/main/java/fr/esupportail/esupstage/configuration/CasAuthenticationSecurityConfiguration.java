@@ -63,11 +63,10 @@ public class CasAuthenticationSecurityConfiguration extends WebSecurityConfigure
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		// @formatter:off
-		http.authorizeRequests().antMatchers("/swagger-ui.html", "/static/**").permitAll();
-		http.authorizeRequests().antMatchers("/login").authenticated()
-				.and().httpBasic().authenticationEntryPoint(this.authenticationEntryPoint())
-				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/logout/cas")
-				.and().addFilterBefore(this.singleSignOutFilter(), CasAuthenticationFilter.class).addFilterBefore(this.logoutFilter(), LogoutFilter.class)
+		http.authorizeRequests().antMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**", "/static/**", "/login/**").permitAll().anyRequest().authenticated()
+			.and().httpBasic().authenticationEntryPoint(this.authenticationEntryPoint())
+			.and().logout().permitAll().logoutUrl("/logout").logoutSuccessUrl("/logout/cas")
+			.and().addFilterBefore(this.singleSignOutFilter(), CasAuthenticationFilter.class).addFilterBefore(this.logoutFilter(), LogoutFilter.class)
 		;
 		// @formatter:on
 		if (this.applicationProperties.getCsrf().isEnable()) {

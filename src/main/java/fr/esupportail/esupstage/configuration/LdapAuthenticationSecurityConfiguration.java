@@ -38,11 +38,10 @@ public class LdapAuthenticationSecurityConfiguration extends WebSecurityConfigur
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		// @formatter:off
-		http.authorizeRequests().antMatchers("/swagger-ui/**", "/static/**").permitAll();
-		http.authorizeRequests().antMatchers("/api/**").authenticated()
-				.and().exceptionHandling().defaultAuthenticationEntryPointFor(new Http401UnauthorizedEntryPoint(), new AntPathRequestMatcher("/api/**"))
-				.and().formLogin().successHandler(new SimpleUrlAuthenticationSuccessHandler(this.applicationProperties.getRedirectUrl()))
-				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		http.authorizeRequests().antMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**", "/static/**").permitAll().anyRequest().authenticated()
+			.and().exceptionHandling().defaultAuthenticationEntryPointFor(new Http401UnauthorizedEntryPoint(), new AntPathRequestMatcher("/api/**"))
+			.and().formLogin().permitAll().successHandler(new SimpleUrlAuthenticationSuccessHandler(this.applicationProperties.getRedirectUrl()))
+			.and().logout().permitAll().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		;
 		// @formatter:on
 		if (this.applicationProperties.getCsrf().isEnable()) {
