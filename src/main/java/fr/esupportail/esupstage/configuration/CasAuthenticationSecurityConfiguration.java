@@ -63,7 +63,8 @@ public class CasAuthenticationSecurityConfiguration extends WebSecurityConfigure
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		// @formatter:off
-		http.authorizeRequests().antMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**", "/static/**", "/login/**").permitAll().anyRequest().authenticated()
+		
+		http.authorizeRequests().antMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**", "/static/**", "/login/cas").permitAll().anyRequest().authenticated()
 			.and().httpBasic().authenticationEntryPoint(this.authenticationEntryPoint())
 			.and().logout().permitAll().logoutUrl("/logout").logoutSuccessUrl("/logout/cas")
 			.and().addFilterBefore(this.singleSignOutFilter(), CasAuthenticationFilter.class).addFilterBefore(this.logoutFilter(), LogoutFilter.class)
@@ -146,7 +147,6 @@ public class CasAuthenticationSecurityConfiguration extends WebSecurityConfigure
 	@Bean
 	public SingleSignOutFilter singleSignOutFilter() {
 		final SingleSignOutFilter singleSignOutFilter = new SingleSignOutFilter();
-		// singleSignOutFilter.setCasServerUrlPrefix(this.casProperties.getBaseUrl());
 		singleSignOutFilter.setIgnoreInitConfiguration(true);
 		return singleSignOutFilter;
 	}
