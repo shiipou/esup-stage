@@ -30,24 +30,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import fr.esupportail.esupstage.domain.jpa.repositories.StructureRepository;
-import fr.esupportail.esupstage.property.ApplicationProperties;
-
 /**
  * @author vdubus
  */
 @Component
 public class CustomUserDetailsService implements AuthenticationUserDetailsService<CasAssertionAuthenticationToken> {
 
-	private final ApplicationProperties applicationProperties;
-
-	private final StructureRepository structureRepository;
-
 	@Autowired
-	public CustomUserDetailsService(final ApplicationProperties applicationProperties, final StructureRepository structureRepository) {
+	public CustomUserDetailsService() {
 		super();
-		this.applicationProperties = applicationProperties;
-		this.structureRepository = structureRepository;
 	}
 
 	@Override
