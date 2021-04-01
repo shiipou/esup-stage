@@ -38,9 +38,9 @@ public class CustomCasAuthenticationEntryPoint implements AuthenticationEntryPoi
 	private String loginUrl;
 
 	/**
-	 * Determines whether the Service URL should include the session id for the specific user. As of CAS 3.0.5, the session id will automatically be stripped.
-	 * However, older versions of CAS (i.e. CAS 2), do not automatically strip the session identifier (this is a bug on the part of the older server
-	 * implementations), so an option to disable the session encoding is provided for backwards compatibility.
+	 * Determines whether the Service URL should include the session id for the specific user. As of CAS 3.0.5, the session id will automatically be stripped. However, older versions
+	 * of CAS (i.e. CAS 2), do not automatically strip the session identifier (this is a bug on the part of the older server implementations), so an option to disable the session
+	 * encoding is provided for backwards compatibility.
 	 * <p>
 	 * By default, encoding is enabled.
 	 */
@@ -82,8 +82,8 @@ public class CustomCasAuthenticationEntryPoint implements AuthenticationEntryPoi
 	 */
 	@SuppressWarnings("deprecation")
 	protected String createServiceUrl(final HttpServletRequest request, final HttpServletResponse response) {
-		return CommonUtils.constructServiceUrl(
-			null, response, this.serviceProperties.getService(), null, this.serviceProperties.getArtifactParameter(), this.encodeServiceUrlWithSessionId);
+		return CommonUtils.constructServiceUrl(null, response, this.serviceProperties.getService(), null, this.serviceProperties.getArtifactParameter(),
+				this.encodeServiceUrlWithSessionId);
 	}
 
 	/**
@@ -93,8 +93,7 @@ public class CustomCasAuthenticationEntryPoint implements AuthenticationEntryPoi
 	 * @return the redirect url. CANNOT be NULL.
 	 */
 	protected String createRedirectUrl(final String serviceUrl) {
-		return CommonUtils
-			.constructRedirectUrl(this.loginUrl, this.serviceProperties.getServiceParameter(), serviceUrl, this.serviceProperties.isSendRenew(), false);
+		return CommonUtils.constructRedirectUrl(this.loginUrl, this.serviceProperties.getServiceParameter(), serviceUrl, this.serviceProperties.isSendRenew(), false);
 	}
 
 	/**
@@ -145,4 +144,5 @@ public class CustomCasAuthenticationEntryPoint implements AuthenticationEntryPoi
 	public final void setEncodeServiceUrlWithSessionId(final boolean encodeServiceUrlWithSessionId) {
 		this.encodeServiceUrlWithSessionId = encodeServiceUrlWithSessionId;
 	}
+
 }
