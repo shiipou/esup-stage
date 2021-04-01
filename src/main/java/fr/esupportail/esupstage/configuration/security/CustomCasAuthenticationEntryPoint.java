@@ -57,18 +57,19 @@ public class CustomCasAuthenticationEntryPoint implements AuthenticationEntryPoi
 	}
 
 	@Override
-	public void commence(
-		final HttpServletRequest request, final HttpServletResponse response, final AuthenticationException authenticationException
-		) throws IOException, ServletException {
-		if ("/login".equals(request.getServletPath())) {
+	public void commence(final HttpServletRequest request, final HttpServletResponse response, final AuthenticationException authenticationException)
+			throws IOException, ServletException {
+		if (request.getServletPath().startsWith("/api/")) {
+			// For API access, we should sent a 401 error is not authenticated.
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+		} else {
+			// For everything else, we should redirect to the login page.
 			final String urlEncodedService = this.createServiceUrl(request, response);
 			final String redirectUrl = this.createRedirectUrl(urlEncodedService);
 
 			this.preCommence(request, response);
 
 			response.sendRedirect(redirectUrl);
-		} else {
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 		}
 	}
 
