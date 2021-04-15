@@ -7,8 +7,8 @@ RUN cp -r ./esupstage-*/* /app
 
 WORKDIR /app
 
-
-FROM openjdk:11-jre-slim
+ARG VARIANT="11-jre-slim"
+FROM openjdk:${VARIANT}
 
 WORKDIR /app
 
