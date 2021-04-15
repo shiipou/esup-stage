@@ -1,22 +1,24 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.154.2/containers/java/.devcontainer/base.Dockerfile
+FROM debian:buster-slim as builder
 
-# [Choice] Java version: 8, 11, 15
-ARG VARIANT="15"
+COPY target/ .
 
-FROM gradle:jdk${VARIANT} AS builder
+RUN mkdir /app
+RUN cp -r ./esupstage-*/* /app
 
 WORKDIR /app
 
-COPY . /app
 
-RUN gradle bootJar
+FROM openjdk:11-jre-slim
 
-FROM openjdk:${VARIANT}
+WORKDIR /app
 
-COPY --from=builder /app/build/libs/esupstage-*.jar /app/esupstage.jar
+ARG UID
+ARG GID
+ENV UID=${UID:-1000}
+ENV GID=${UID:-1000}
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+USER $UID:$GIG
 
-CMD [ "java", "-jar", "/app/esupstage.jar" ]
+COPY --chown="${UID}:${GID}" --from=builder /app/* /app
+
+CMD java -classpath "/app/classes:/app/lib/*" fr.esupportail.esupstage.Application
