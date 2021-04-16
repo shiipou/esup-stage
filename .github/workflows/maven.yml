@@ -38,7 +38,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - name: Zip generated dir
         run: |
-          cp Dockerfile target/esupstage-*/Dockerfile
+          cp Dockerfile target/esupstage-*/
           zip -r esupstage.zip target/esupstage-*
       - name: Save artifact
         uses: actions/upload-artifact@v2
