@@ -2,9 +2,17 @@ spring:
   profiles:
     include:
       - embedded-ldap
+      - h2
+  datasource:
+    username: 'root'
+    password: 'root'
   mail:
     host: localhost
     port: 25
 application:
   csrf:
     enable: false
+  restService:
+    base-url: https://referentiel-test.parisnanterre.fr/
+    user: root
+    pass: 2021@lo&&garantiE

@@ -19,6 +19,7 @@ import fr.esupportail.esupstage.domain.jpa.entities.Convention;
 import fr.esupportail.esupstage.domain.jpa.entities.Etudiant;
 import fr.esupportail.esupstage.domain.jpa.repositories.ConventionRepository;
 import fr.esupportail.esupstage.domain.jpa.repositories.EtudiantRepository;
+import fr.esupportail.esupstage.services.beans.conventions.ConventionBean;
 
 @Named
 @ApplicationScoped
@@ -40,7 +41,8 @@ public class ConventionService {
     // }
 
     public Page<ConventionBean> getConventions(Pageable pageable) {
-        return this.conventionRepository.findAll(pageable).map(ConventionBean::map);
+        // return this.conventionRepository.findAll(pageable);
+        return null;
     }
 
     public ConventionBean getConvention(Integer integer) {

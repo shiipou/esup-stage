@@ -18,13 +18,13 @@
 
         <div class="ui-fluid">
             <h:panelGroup>
-                <p:tabView id="tabs" dynamic="true">
+                <p:tabView id="conventionsEditTabView" dynamic="true" activeIndex="#{conventionCreationView.convention.tabIndex}">
                     <p:tab title="#{conventionCreationView.guidelineTitle}" disabled="#{conventionCreationView.showGuidelineTab}">
                         <h:form action="#{conventionCreationView.acceptGuidelines()}">
                             <h:panelGrid columns="2" cellpadding="7" styleClass="p-mb-3">
                                 <h:outputText value="#{conventionCreationView.guidelines}"/>
                             </h:panelGrid>
-                            <p:commandButton value="Valider" update="tabs" icon="pi pi-check"/>
+                            <p:commandButton value="Valider" update="conventionsEditTabView" icon="pi pi-check"/>
                         </h:form>
                     </p:tab>
                     <p:tab title="#{conventionCreationView.studentTitle}" disabled="#{conventionCreationView.student == null}">
@@ -33,23 +33,23 @@
                     <p:tab title="#{conventionCreationView.structureTitle}" disabled="#{conventionCreationView.structure == null}">
                         <!-- //TODO: Include The Joshua Company search view -->
                         <ui:include src="/search-structure.xhtml" />
-                        <p:commandButton value="Valider" update="tabs" action="#{conventionCreationView.saveStructure()}" icon="pi pi-check" />
+                        <p:commandButton value="Valider" update="conventionsEditTabView" action="#{conventionCreationView.saveStructure()}" icon="pi pi-check" />
                     </p:tab>
                     <p:tab title="#{conventionCreationView.serviceTitle}" disabled="#{conventionCreationView.showServiceTab}">
                         <!-- //TODO: Include The Joshua Company service view -->
-                        <p:commandButton value="Valider" update="tabs" action="#{conventionCreationView.saveStudent()}" icon="pi pi-check"/>
+                        <p:commandButton value="Valider" update="conventionsEditTabView" action="#{conventionCreationView.saveStudent()}" icon="pi pi-check"/>
 
                     </p:tab>
                     <p:tab title="#{conventionCreationView.tutorTitle}" disabled="#{conventionCreationView.showTutorTab}">
-                        <p:commandButton value="Valider" update="tabs" action="#{conventionCreationView.saveStudent()}" icon="pi pi-check"/>
+                        <p:commandButton value="Valider" update="conventionsEditTabView" action="#{conventionCreationView.saveStudent()}" icon="pi pi-check"/>
 
                     </p:tab>
                     <p:tab title="#{conventionCreationView.internshipTitle}" disabled="#{conventionCreationView.showInternshipTab}">
-                        <p:commandButton value="Valider" update="tabs" action="#{conventionCreationView.saveStudent()}" icon="pi pi-check"/>
+                        <p:commandButton value="Valider" update="conventionsEditTabView" action="#{conventionCreationView.saveStudent()}" icon="pi pi-check"/>
 
                     </p:tab>
                     <p:tab title="#{conventionCreationView.teacherTitle}" disabled="#{conventionCreationView.showTeacherTab}">
-                        <p:commandButton value="Valider" update="tabs" action="#{conventionCreationView.saveStudent()}" icon="pi pi-check"/>
+                        <p:commandButton value="Valider" update="conventionsEditTabView" action="#{conventionCreationView.saveStudent()}" icon="pi pi-check"/>
 
                     </p:tab>
                     <p:tab title="#{conventionCreationView.signerTitle}" disabled="#{conventionCreationView.showSignerTab}">

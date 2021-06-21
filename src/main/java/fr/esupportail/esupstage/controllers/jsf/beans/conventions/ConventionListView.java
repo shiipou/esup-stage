@@ -9,7 +9,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fr.esupportail.esupstage.services.conventions.ConventionBean;
+import fr.esupportail.esupstage.services.beans.conventions.ConventionBean;
 import fr.esupportail.esupstage.services.conventions.ConventionService;
 import lombok.Getter;
 
