@@ -18,7 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import fr.esupportail.esupstage.domain.jpa.entities.Structure;
-import fr.esupportail.esupstage.services.conventions.ConventionBean;
+import fr.esupportail.esupstage.services.beans.conventions.ConventionBean;
 import fr.esupportail.esupstage.services.conventions.ConventionService;
 import javassist.NotFoundException;
 import lombok.Getter;
@@ -106,6 +106,7 @@ public class ConventionCreationView implements Serializable {
 					// FacesMessage(FacesMessage.SEVERITY_ERROR,
 					// "Student can't be found using provided info.", e.getLocalizedMessage()));
 				}
+				this.convention.setTabIndex(1);
 			} else
 				this.student = null;
 		}
@@ -120,9 +121,10 @@ public class ConventionCreationView implements Serializable {
 		this.convention.setStudent(this.student);
 		this.convention = this.service.updateConvention(this.convention);
 		this.structure = new Structure();
+		this.convention.setTabIndex(2);
 	}
 
 	public void saveStructure() throws NotFoundException {
-
+		this.convention.setTabIndex(3);
 	}
 }
